@@ -1,0 +1,33 @@
+<div class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <app-navigation></app-navigation>
+
+        <app-sidebar></app-sidebar>
+
+        <div class="content-wrapper" style="background-color: rgba(0, 128, 128, 0.281)">
+            <!-- Content Header (Page header) -->
+            <div class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1 class="m-0 text-dark">Customer by Age</h1>
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                    <div class="row">
+                        <div class="col">
+                            <dx-chart id="chart" [dataSource]="customers">
+                                <dxi-series argumentField="name" valueField="age" name="Customers" type="bar"
+                                    color="#ffaa66">
+                                </dxi-series>
+                                <dxo-tooltip [enabled]="true" [customizeTooltip]="customizeTooltip"></dxo-tooltip>
+                            </dx-chart>
+                        </div>
+                    </div>
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content-header -->
+        </div>
+
+    </div>
+    <!-- ./wrapper -->
+</div>

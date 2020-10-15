@@ -1,0 +1,13 @@
+{
+    "presets": [
+        ["babel-preset-env", {
+            "targets": {
+                "node": "10.15.3"
+            }
+        }]
+    ],
+    "plugins": [
+        "transform-runtime",
+        "transform-decorators-legacy"
+    ]
+}

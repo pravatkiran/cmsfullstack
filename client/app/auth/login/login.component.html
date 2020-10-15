@@ -1,0 +1,75 @@
+<div class="hold-transition login-page" style="background-color: rgba(0, 128, 128, 0.849)">
+    <div class="login-box">
+        <div class="login-logo">
+            <h1>Login</h1>
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <!-- <p class="login-box-msg">Sign in to start your session</p> -->
+
+                <!-- form start -->
+                <form [formGroup]="login_form">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <div class="input-group mb-3">
+                                <input type="email" class="form-control" id="email" placeholder="Enter email"
+                                    formControlName="email" [ngClass]="{'is-invalid': submitted && f.email.errors }" />
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-envelope"></span>
+                                    </div>
+                                </div>
+                                <div *ngIf="submitted && f.email.errors">
+                                    <div *ngIf="f.email.errors.required">
+                                        <span style="color: red;">Email is required</span>
+                                    </div>
+                                    <div *ngIf="f.email.errors.email">
+                                        <span style="color: red;">Must be valid email</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="password" placeholder="Password"
+                                    formControlName="password"
+                                    [ngClass]="{'is-invalid': submitted && f.password.errors}" />
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-lock"></span>
+                                    </div>
+                                </div>
+                                <div *ngIf="submitted && f.password.errors">
+                                    <div *ngIf="f.password.errors.required">
+                                        <span style="color: red;">Password is required</span>
+                                    </div>
+                                    <div *ngIf="f.password.errors.minlength">
+                                        <span style="color: red;">Must be of 6 characters</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-success" style="margin-left: 5px;"
+                            (click)="loginUser()">Login</button>
+                        <button type="reset" class="btn btn-danger" (click)="resetForm()"
+                            style="margin-left: 5px;">Reset</button>
+                        <!-- <button type="submit" class="btn btn-primary" style="margin-left: 25px;"
+                            (click)="signUp()">Signup</button> -->
+                    </div>
+                </form>
+                <p class="mb-0">
+                    <a routerLink="/signup" class="text-center">Register a new membership</a>
+                </p>
+            </div>
+            <!-- /.login-card-body -->
+        </div>
+    </div>
+    <!-- /.login-box -->
+</div>

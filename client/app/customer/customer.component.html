@@ -1,0 +1,99 @@
+<div class="hold-transition sidebar-mini layout-fixed">
+    <div class="wrapper">
+        <app-navigation></app-navigation>
+
+        <app-sidebar></app-sidebar>
+        <div class="content-wrapper" style="background-color: rgba(0, 128, 128, 0.021)">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" data-slide="true" (click)="openCreate(content)"
+                                    style="margin: 5px 0px 0px 5px">
+                                    <button class="btn  btn-outline-primary" style="margin-top: -7px;"> Create Customer
+                                        <i class="fas fa-user-plus"></i> </button>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <table class="table table-sm table-striped" style="margin: 5px 10px 0px 10px">
+                            <thead>
+                                <tr>
+                                    <th style="width: 10px">S.N</th>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Phone Number</th>
+                                    <th>Date of Birth</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                                <tr *ngFor="let customer of customers; index as i">
+                                    <td>{{ i + 1 }}</td>
+                                    <td>{{ customer.name }}</td>
+                                    <td>{{customer.address }}</td>
+                                    <td>{{customer.phone_number }}</td>
+                                    <td>{{customer.dob}}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-info" style="margin-left: 5px;"
+                                            (click)="openUpdate(content, customer)">
+                                            <i class="fas fa-edit"></i>Update
+                                        </button>
+                                        <button class="btn btn-sm btn-danger" style="margin-left: 5px;"
+                                            (click)="delete(customer.customerid)">
+                                            <i class="fas fa-trash"></i> Delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <ng-template #content let-modal>
+                <div class="modal-header">
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="customerForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" formControlName="name"
+                                placeholder="Enter customer'Save name">
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address </label>
+                            <input type="text" class="form-control" formControlName="address"
+                                placeholder="Enter customer's address" />
+                        </div>
+                        <div class="form-group">
+                            <label for="phone_number">Phone Number </label>
+                            <input type="number" name="phone_number" formControlName="phone_number"
+                                class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Date of Birth </label>
+                            <input type="date" name="dob" formControlName="dob" class="form-control">
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" (click)="cancel()">Close</button>
+                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                    <button type="button" class="btn btn-primary" (click)="createCustomer()"
+                        *ngIf="createModal">Save</button>
+                    <button type="button" class="btn btn-primary" (click)="updateCustomer()"
+                        *ngIf="updateModal">Update</button>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

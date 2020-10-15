@@ -1,0 +1,67 @@
+<div class="hold-transition register-page" style="background-color: rgba(0, 128, 128, 0.849)">
+    <div class="register-box">
+        <div class="register-logo">
+            <h1>Register</h1>
+        </div>
+        <div class="card">
+            <div class="card-body register-card-body">
+                <!-- form start -->
+                <form [formGroup]="signupForm">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="email">Email address</label>
+                            <div class="input-group mb-3">
+                                <input type="email" class="form-control" placeholder="Enter email"
+                                    formControlName="email" [ngClass]="{'is-invalid':submitted && f.email.errors }" />
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-envelope"></span>
+                                    </div>
+                                </div>
+                                <div *ngIf="submitted && f.email.errors">
+                                    <div *ngIf="f.email.errors.required">
+                                        <span style="color: red;">Email is required</span>
+                                    </div>
+                                    <div *ngIf="f.email.errors.email">
+                                        <span style="color: red;">Must be valid email</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <div class="input-group mb-3">
+                                <input type="password" class="form-control" placeholder="Enter password"
+                                    formControlName="password"
+                                    [ngClass]="{'is-invalid': submitted && f.password.errors }" />
+                                <div class="input-group-append">
+                                    <div class="input-group-text">
+                                        <span class="fas fa-lock"></span>
+                                    </div>
+                                </div>
+                                <div *ngIf="submitted && f.password.errors">
+                                    <div *ngIf="f.password.errors.required">
+                                        <span style="color: red;">Password is required</span>
+                                    </div>
+                                    <div *ngIf="f.password.errors.minlength">
+                                        <span style="color: red;">Must be of 6 characters</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-success" (click)="saveUser()">Submit</button>
+                        <button type="reset" class="btn btn-danger" (click)="resetForm()"
+                            style="margin-left: 5px;">Reset</button>
+                    </div>
+                </form>
+
+                <a routerLink="/login" class="text-center">I already have a membership</a>
+            </div>
+            <!-- /.form-box -->
+        </div><!-- /.card -->
+    </div>
+</div>
